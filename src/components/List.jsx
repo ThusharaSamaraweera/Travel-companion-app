@@ -36,7 +36,7 @@ const List = ({places}) => {
       <Grid container spacing={3} className={classes.list}>
         {places?.map((place, i) => (
           <Grid item key={i} xs={12}>
-            <PlaceDetails place={place}  />
+            <PlaceDetails place={place} key={i} />
           </Grid>
         ))}
       </Grid>
