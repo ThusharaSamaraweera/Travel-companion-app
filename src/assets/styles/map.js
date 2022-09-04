@@ -9,6 +9,7 @@ export default makeStyles((theme) => ({
     width: "100px",
   },
   mapContainer: {
+    marginTop: 50,
     height: "85vh",
     width: "100%",
   },
