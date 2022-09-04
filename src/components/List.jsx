@@ -11,10 +11,10 @@ import useStyles from "../assets/styles/list";
 import PlaceCard from "./PlaceCard";
 
 const List = (props) => {
-  const { places, childClicked, isLoading } = props;
+  const { places, childClicked, isLoading, type, setType, rating, setRating } =
+    props;
   const classes = useStyles();
-  const [type, setType] = useState("restaurants");
-  const [rating, setRating] = useState("");
+
   const [eleRefs, setEleRefs] = useState([]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const List = (props) => {
         <>
           <FormControl className={classes.formControl}>
             <InputLabel>Type</InputLabel>
-            <Select value={type} onChange={(e) => setType(e.target.value)}>
+            <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
               <option value="restaurants">Restaurants</option>
               <option value="hotels">Hotels</option>
               <option value="attractions">Attractions</option>
