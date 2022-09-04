@@ -4,18 +4,11 @@ import useStyles from '../assets/styles/list'
 import PlaceDetails from './PlaceDetails'
 import { getPlaces } from './services'
 
-const List = () => {
+const List = ({places}) => {
   const classes = useStyles()
   const [type, setType] = useState('restaurants')
   const [rating, setRating] = useState('')
-  const [places, setPlaces] = useState([])
 
-  useEffect(() => {
-    getPlaces().then((data) => {
-      setPlaces(data)
-      console.log(data)
-    })
-  }, [])
 
   return (
     <div className={classes.container}>

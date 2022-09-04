@@ -9,4 +9,8 @@ export default makeStyles((theme) => ({
     minWidth: 120,
     marginBottom: "30px",
   },
+  list: {
+    height: "75vh",
+    overflow: "auto",
+  },
 }));
