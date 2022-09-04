@@ -1,8 +1,7 @@
 import { FormControl, Grid, InputLabel, Select, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import useStyles from '../assets/styles/list'
-import PlaceDetails from './PlaceDetails'
-import { getPlaces } from './services'
+import PlaceDetails from './PlaceCard'
 
 const List = ({places}) => {
   const classes = useStyles()

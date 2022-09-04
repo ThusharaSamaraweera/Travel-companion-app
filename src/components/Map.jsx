@@ -12,7 +12,7 @@ const Map = (props) => {
 
   return (
     <div className={classes.mapContainer}>
-      <GoogleMapReact
+      {/* <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={defaultCoordinates}
         center={coordinates}
@@ -26,7 +26,7 @@ const Map = (props) => {
         }}
         onChildClick={() => {}}
       >
-      </GoogleMapReact>
+      </GoogleMapReact> */}
     </div>
   );
 };

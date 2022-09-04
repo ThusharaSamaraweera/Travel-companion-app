@@ -4,7 +4,8 @@ import Header from "./components/Header";
 import List from "./components/List";
 import Map from "./components/Map";
 import { useEffect, useState } from "react";
-import { getPlaces } from "./components/services";
+import { getPlaces } from "./services";
+import {data} from "./data/places"
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -21,10 +22,11 @@ function App() {
 
   useEffect(() => {
     console.log(coordinates, bounds)
-    getPlaces(bounds?.sw, bounds?.ne).then((data) => {
-      setPlaces(data);
-      console.log(data);
-    });
+    // getPlaces(bounds?.sw, bounds?.ne).then((data) => {
+    //   setPlaces(data);
+    //   console.log(data);
+    // });
+    setPlaces(data)
   }, [coordinates, bounds]);
 
   return (
