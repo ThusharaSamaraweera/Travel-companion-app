@@ -1,10 +1,20 @@
-import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core'
-import React from 'react'
-
-import useStayles from '../assets/styles/placeCard'
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Chip,
+  Typography,
+} from "@material-ui/core";
+import React from "react";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import PhoneIcon from "@material-ui/icons/Phone";
+import useStyles from "../assets/styles/placeCard";
 
 const PlaceCard = ({ place }) => {
-  const classes = useStayles()
+  const classes = useStyles();
 
   return (
     <Card elevation={6}>
@@ -21,13 +31,68 @@ const PlaceCard = ({ place }) => {
         <Typography gutterBottom variant="h5">
           {place.name}
         </Typography>
-        <Box style={{display: 'flex', justifyContent: 'space-between'}}>
-          <Typography variant="subtitle1">Ranking</Typography>
-          <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
+        <Box display="flex" justifyContent="space-between" my={2}>
+          <Typography component="legend">Price</Typography>
+          <Typography gutterBottom variant="subtitle1">
+            {place.price_level}
+          </Typography>
         </Box>
+        <Box style={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="subtitle1">Ranking</Typography>
+          <Typography gutterBottom variant="subtitle1">
+            {place.ranking}
+          </Typography>
+        </Box>
+
+        {place?.awards?.slice(0, 4).map((award) => (
+          <Box
+            my={1}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <img src={award.images.small} alt={award.display_name} />
+            <Typography variant="subtitle2" color="textSecondary">
+              {award.display_name}
+            </Typography>
+          </Box>
+        ))}
+
+        {place?.cuisine?.map(({ name }) => (
+          <Chip size="small" label={name} key={name} className={classes.chip} />
+        ))}
+
+        {place?.address && (
+          <Typography
+            gutterBottom
+            variant="body2"
+            color="textSecondary"
+            className={classes.subtitle}
+          >
+            <LocationOnIcon /> {place.address}
+          </Typography>
+        )}
+
+        {place.phone && (
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.spacing}
+          >
+            <PhoneIcon /> {place.phone}
+          </Typography>
+        )}
       </CardContent>
+      <CardActions>
+        <Button size="small" color="primary" onClick={() => window.open(place.web_url, "_blank")}>
+          Trip Advisor
+        </Button>
+        <Button size="small" color="primary" onClick={() => window.open(place.website, "_blank")}>
+          website
+        </Button>
+      </CardActions>
     </Card>
   );
-}
+};
 
-export default PlaceCard
+export default PlaceCard;
